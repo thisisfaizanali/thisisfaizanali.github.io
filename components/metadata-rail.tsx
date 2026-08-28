@@ -33,27 +33,17 @@ export function MetadataRail() {
       aria-hidden
       className="pointer-events-none fixed left-0 top-0 z-20 hidden h-full w-10 flex-col items-center justify-between py-8 lg:flex"
     >
-      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-faint">
-        F·A
-      </span>
-
       <div className="flex flex-col items-center gap-6">
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint [writing-mode:vertical-rl]">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint [writing-mode:vertical-rl] rotate-180">
           PORTFOLIO / 2026
         </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint [writing-mode:vertical-rl]">
-          REV. 02
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint [writing-mode:vertical-rl]">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint [writing-mode:vertical-rl] rotate-180">
           BENGALURU · IN
-        </span>
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint tabular-nums [writing-mode:vertical-rl]">
-          {time}
         </span>
       </div>
 
-      <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-ink-faint [writing-mode:vertical-rl]">
-        12.97°N / 77.59°E
+      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-faint tabular-nums [writing-mode:vertical-rl] rotate-180">
+        {time}
       </span>
     </div>
   );

@@ -1,13 +1,17 @@
 export const profile = {
   name: "Md Faizan Ali",
-  role: "Frontend Engineer",
+  role: "Full-Stack Engineer",
   location: "Bengaluru, India",
   email: "faizanaliwhb@gmail.com",
   phone: "+91 7070524454",
-  available: true,
-  // One line. What he does, not what he is "passionate about".
+  // Engagement types, not a boolean — drives the hero eyebrow and the Status field.
+  availability: ["Freelance", "Contract", "Full-time"],
+  // The display line. Short enough to set at display-lg, and it claims both ends
+  // of the stack rather than the interface alone.
+  statement: "I build the interface and the API behind it.",
+  // The supporting paragraph. What he does, not what he is "passionate about".
   positioning:
-    "I build production interfaces in React and Next.js — component systems, real API states, and the unglamorous edge cases that keep a SaaS app from feeling brittle.",
+    "A year on a production SaaS app — component systems and real API states on one side, schema, auth, and the endpoints behind them on the other. The edge cases nobody specs are the actual job.",
   links: {
     github: "https://github.com/thisisfaizanali",
     linkedin: "https://linkedin.com/in/md-faizan-ali",
@@ -188,8 +192,8 @@ export const education = {
   from: "Dec 2020",
   to: "June 2024",
   points: [
-    "Built the core CS foundation the frontend work still runs on — data structures and algorithms, DBMS, operating systems, and computer networks.",
+    "Built the core CS foundation the engineering work still runs on — data structures and algorithms, DBMS, operating systems, and computer networks.",
     "Where the algorithmic habit started, and kept going well past the syllabus: 700+ problems solved and Institute Rank 2 on the GeeksforGeeks leaderboard.",
-    "Taught myself the modern web stack — React, Next.js, and TypeScript — alongside the degree, and turned it into internship and full-time frontend work.",
+    "Taught myself the modern web stack — React, Next.js, and TypeScript — alongside the degree, and turned it into internship and full-time engineering work.",
   ],
 } as const;

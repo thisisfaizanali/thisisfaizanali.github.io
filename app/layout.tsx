@@ -28,12 +28,15 @@ export const metadata: Metadata = {
     template: `%s — ${profile.name}`,
   },
   description:
-    "Frontend Engineer in Bengaluru building production interfaces in React, Next.js, and TypeScript. Selected work, case studies, and contact.",
+    "Full-Stack Engineer in Bengaluru building production software in React, Next.js, Node.js, and TypeScript. Selected work, case studies, and contact.",
   keywords: [
-    "Frontend Engineer",
+    "Full-Stack Engineer",
     "React Developer",
     "Next.js",
+    "Node.js",
     "TypeScript",
+    "PostgreSQL",
+    "REST APIs",
     "Bengaluru",
     "Md Faizan Ali",
   ],
@@ -45,13 +48,13 @@ export const metadata: Metadata = {
     siteName: profile.name,
     title: `${profile.name} — ${profile.role}`,
     description:
-      "Frontend Engineer building production interfaces in React, Next.js, and TypeScript.",
+      "Full-Stack Engineer building production software in React, Next.js, Node.js, and TypeScript.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${profile.name} — ${profile.role}`,
     description:
-      "Frontend Engineer building production interfaces in React, Next.js, and TypeScript.",
+      "Full-Stack Engineer building production software in React, Next.js, Node.js, and TypeScript.",
   },
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
@@ -66,7 +69,7 @@ const personSchema = {
   url: SITE,
   address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
   sameAs: [profile.links.github, profile.links.linkedin, profile.links.leetcode],
-  knowsAbout: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Frontend Engineering"],
+  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "API design"],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

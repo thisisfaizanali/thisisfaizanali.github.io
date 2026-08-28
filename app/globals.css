@@ -10,21 +10,21 @@
 ------------------------------------------------------------------- */
 
 :root {
-  --paper: #eceded;
-  --paper-raised: #e2e4e4;
+  --paper: #9a9d9b;
+  --paper-raised: #8e918f;
   --ink: #14110e;
-  --ink-muted: #575955;
-  --ink-faint: #8b8d88;
-  --rule: #d2d4d1;
-  --rule-strong: #bbbdb8;
+  --ink-muted: #33352f;
+  --ink-faint: #55584f;
+  --rule: #7c7f7d;
+  --rule-strong: #686b69;
   --accent: #b4531f;
   --grain-opacity: 0.04;
   /* Vertical margin rules that mark the content column — an engineered,
      drafting-sheet feel rather than a flat fill. */
-  --guide: rgba(20, 17, 14, 0.055);
+  --guide: rgba(20, 17, 14, 0.14);
   /* Cursor-tracking crosshair hairlines (grid-crosshair.tsx) — very low
      alpha so the line reads as a guide, never a UI element. */
-  --crosshair: rgba(20, 17, 14, 0.08);
+  --crosshair: rgba(20, 17, 14, 0.18);
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -234,6 +234,55 @@
   .display-md {
     font-size: clamp(1.875rem, 3.6vw, 3rem);
     line-height: 1.05;
+  }
+
+  /* Markdown post body. Hand-styled against the site's own tokens instead of
+     a typography plugin — a generic prose default would fight the spec-sheet
+     look everywhere else on this site. */
+  .prose-post {
+    @apply text-lg leading-relaxed text-ink-muted;
+  }
+  .prose-post > * + * {
+    margin-top: 1.5em;
+  }
+  .prose-post h2 {
+    @apply font-serif text-2xl text-ink;
+    margin-top: 2.2em;
+  }
+  .prose-post h3 {
+    @apply font-serif text-xl text-ink;
+    margin-top: 1.8em;
+  }
+  .prose-post ul {
+    @apply list-disc pl-5;
+  }
+  .prose-post ol {
+    @apply list-decimal pl-5;
+  }
+  .prose-post li + li {
+    margin-top: 0.4em;
+  }
+  .prose-post code {
+    @apply border border-rule bg-paper-raised px-1.5 py-0.5 font-mono text-[0.8em] text-ink;
+  }
+  .prose-post pre {
+    @apply overflow-x-auto border border-rule bg-paper-raised p-4 text-sm;
+  }
+  .prose-post pre code {
+    @apply border-0 bg-transparent p-0;
+  }
+  .prose-post blockquote {
+    @apply border-l-2 border-rule-strong pl-4 italic;
+  }
+  .prose-post table {
+    @apply w-full border-collapse text-base;
+  }
+  .prose-post th,
+  .prose-post td {
+    @apply border border-rule px-3 py-2 text-left align-top;
+  }
+  .prose-post img {
+    @apply border border-rule;
   }
 }
 

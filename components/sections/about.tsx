@@ -43,7 +43,7 @@ export function About() {
             <div className="space-y-6 text-lg leading-relaxed text-ink-muted">
               <p>
                 I spent the last year on a production SaaS app, which is a fast way to learn that
-                the interesting part of frontend is not the happy path. It is the empty state
+                the interesting part of product work is not the happy path. It is the empty state
                 nobody specced, the token that expires mid-request, the table that has to stay
                 usable at 4,000 rows and at zero.
               </p>

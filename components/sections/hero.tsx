@@ -8,13 +8,9 @@ import { profile } from "@/lib/content";
 // hydration, so every reveal here uses the .rise/.mask-up utilities rather
 // than a scroll-gated Reveal/whileInView.
 const titleBlock = [
-  ["Project", "Portfolio"],
-  ["Subject", profile.name],
-  ["Discipline", "Frontend Engineering"],
+  ["Discipline", "Software Engineering"],
   ["Location", profile.location],
-  ["Status", profile.available ? "Open to roles" : "Currently engaged"],
-  ["Sheet", "00 / 05"],
-  ["Issued", "2026"],
+  ["Availability", profile.availability.join(" · ")],
 ] as const;
 
 export function Hero() {
@@ -25,32 +21,25 @@ export function Hero() {
           <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
           <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
         </span>
-        <span className="label">Open to frontend roles — {profile.location}</span>
+        <span className="label">
+          Open to {profile.availability.join(", ").toLowerCase()} work — {profile.location}
+        </span>
       </div>
 
       <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-10">
-        {/* Left-weighted focal column: sheet number, name, lead, CTA. */}
+        {/* Left-weighted focal column: statement, lead, CTA. */}
         <div className="lg:col-span-7">
-          <div className="flex flex-col gap-2 md:flex-row md:items-start md:gap-6">
-            <span
-              aria-hidden
-              className="rise font-mono text-sm text-ink-faint md:mt-3 md:text-2xl lg:text-3xl"
-              style={{ animationDelay: "0.08s" }}
-            >
-              00
-            </span>
-            <h1 className="font-serif display-xl">
-              <span className="mask-clip">
-                <span className="mask-up whitespace-nowrap" style={{ animationDelay: "0.1s" }}>
-                  Faizan <span className="italic">Ali</span>
-                </span>
+          <h1 className="font-serif display-lg">
+            <span className="mask-clip">
+              <span className="mask-up" style={{ animationDelay: "0.1s" }}>
+                {profile.statement}
               </span>
-            </h1>
-          </div>
+            </span>
+          </h1>
 
           <div className="rise mt-6 flex items-center gap-4" style={{ animationDelay: "0.26s" }}>
             <span className="h-px w-12 bg-rule-strong md:w-20" aria-hidden />
-            <span className="label">Frontend Engineer</span>
+            <span className="label">{profile.role}</span>
           </div>
 
           <div className="rise mt-8 max-w-lg" style={{ animationDelay: "0.36s" }}>
@@ -75,7 +64,7 @@ export function Hero() {
 
         {/* Title-block: bordered grid of labelled fields, drafting-sheet style. */}
         <div className="rise lg:col-span-5" style={{ animationDelay: "0.3s" }}>
-          <div className="grid grid-cols-1 gap-px border border-rule bg-rule sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-px border border-rule bg-rule">
             {titleBlock.map(([k, v]) => (
               <div
                 key={k}
@@ -85,11 +74,6 @@ export function Hero() {
                 <p className="mt-1.5 font-mono text-sm text-ink">{v}</p>
               </div>
             ))}
-            <div className="flex items-center justify-center bg-paper p-4">
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-ink-faint">
-                F · A
-              </span>
-            </div>
           </div>
         </div>
       </div>

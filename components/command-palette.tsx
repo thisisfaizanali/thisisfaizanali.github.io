@@ -19,6 +19,7 @@ const sections = [
   { label: "Experience", href: "/#experience" },
   { label: "About", href: "/#about" },
   { label: "Stack", href: "/#stack" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/#contact" },
 ];
 

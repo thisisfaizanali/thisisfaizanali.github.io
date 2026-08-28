@@ -80,8 +80,9 @@ export function Contact() {
 
           <p className="mt-4 max-w-md text-sm text-ink-muted">
             Fastest by email. Press{" "}
-            <kbd className="border border-rule px-1.5 py-0.5 font-mono text-[0.6875rem]">⌘K</kbd>{" "}
-            anywhere on this site to jump around.
+            <kbd className="border border-rule px-1.5 py-0.5 font-mono text-[0.6875rem]">Ctrl K</kbd>{" "}
+            (<kbd className="border border-rule px-1.5 py-0.5 font-mono text-[0.6875rem]">⌘K</kbd> on
+            Mac) anywhere on this site to jump around.
           </p>
         </Reveal>
       </div>

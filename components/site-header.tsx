@@ -11,6 +11,7 @@ const nav = [
   { label: "Work", href: "/#work" },
   { label: "Experience", href: "/#experience" },
   { label: "About", href: "/#about" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -41,7 +42,7 @@ export function SiteHeader() {
       <div className="shell flex h-16 items-center justify-between gap-6">
         <Link
           href="/#top"
-          className="group/logo font-serif text-lg leading-none tracking-tight"
+          className="group/logo font-serif text-xl leading-none tracking-tight md:text-2xl"
           aria-label={`${profile.name}, home`}
         >
           <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/logo:-translate-y-px">
