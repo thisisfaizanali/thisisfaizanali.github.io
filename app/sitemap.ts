@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/lib/content";
 import { getAllPosts } from "@/lib/blog";
 
-const SITE = "https://faizanali.dev";
+const SITE = "https://thisisfaizanali.github.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

@@ -19,7 +19,7 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
-const SITE = "https://faizanali.dev";
+const SITE = "https://thisisfaizanali.github.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
