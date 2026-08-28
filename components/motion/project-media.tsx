@@ -12,6 +12,18 @@ import {
   useTransform,
 } from "motion/react";
 
+/** L-shaped registration mark, like a crop mark on a print plate. Exported for
+ *  reuse by the case-study figure plates, which render outside this component. */
+export function CropMark({ corner }: { corner: "tl" | "tr" | "bl" | "br" }) {
+  const pos = {
+    tl: "left-2.5 top-2.5 border-l border-t",
+    tr: "right-2.5 top-2.5 border-r border-t",
+    bl: "left-2.5 bottom-2.5 border-l border-b",
+    br: "right-2.5 bottom-2.5 border-r border-b",
+  }[corner];
+  return <span className={`pointer-events-none absolute size-3 border-rule-strong/80 ${pos}`} />;
+}
+
 /**
  * Project thumbnail with two layers of motion:
  *  - the image drifts slowly against the scroll (parallax), so the frame feels
@@ -20,16 +32,23 @@ import {
  *
  * Images are anchored left-top: these are app screenshots with a left sidebar,
  * and losing the sidebar to a centre crop loses the point of the picture.
+ *
+ * Dressed as a plate in a technical dossier: static crop marks at the four
+ * corners and a small plate annotation, echoing the folio/label system used
+ * throughout the rest of the site.
  */
 export function ProjectMedia({
   src,
   alt,
   priority = false,
+  plate,
 }: {
   src: string;
   alt: string;
   /** Set on the first project — it sits near the fold and drives LCP. */
   priority?: boolean;
+  /** Optional plate annotation, e.g. "PLATE 01". Omit to skip the corner tag. */
+  plate?: string;
 }) {
   const wrap = useRef<HTMLDivElement>(null);
   const still = useReducedMotion();
@@ -89,6 +108,17 @@ export function ProjectMedia({
           hovered ? "bg-ink/25" : ""
         }`}
       />
+
+      <CropMark corner="tl" />
+      <CropMark corner="tr" />
+      <CropMark corner="bl" />
+      <CropMark corner="br" />
+
+      {plate ? (
+        <span className="pointer-events-none absolute right-3 top-3 border border-rule-strong/60 bg-paper/85 px-1.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-ink-faint">
+          {plate}
+        </span>
+      ) : null}
 
       <AnimatePresence>
         {hovered && !still ? (

@@ -5,7 +5,7 @@ import { stack } from "@/lib/content";
 export function Stack() {
   return (
     <section id="stack" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading eyebrow="Stack" title="What I reach for." aside="Listed, not badged" italicFrom={3} />
+      <SectionHeading folio="04" eyebrow="Stack" title="What I reach for." aside="Listed, not badged" italicFrom={3} />
 
       <dl className="divide-y divide-rule border-y border-rule">
         {stack.map((row, i) => (

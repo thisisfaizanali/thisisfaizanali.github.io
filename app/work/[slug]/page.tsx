@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
+import { CropMark } from "@/components/motion/project-media";
 import { projects } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -22,12 +23,52 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   };
 }
 
+/** A full-width screenshot presented as a labelled plate: FIG. caption, crop
+ *  marks at the corners — same registration-mark language as the work grid,
+ *  minus the scroll parallax, which the case study doesn't need. */
+function Figure({
+  src,
+  alt,
+  index,
+  caption,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  index: string;
+  caption: string;
+  priority?: boolean;
+}) {
+  return (
+    <div>
+      <p className="label mb-3">
+        Fig. {index} — {caption}
+      </p>
+      <div className="relative aspect-[19/10] overflow-hidden border border-rule bg-paper-raised">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 76rem, 100vw"
+          className="object-cover object-left-top"
+          priority={priority}
+        />
+        <CropMark corner="tl" />
+        <CropMark corner="tr" />
+        <CropMark corner="bl" />
+        <CropMark corner="br" />
+      </div>
+    </div>
+  );
+}
+
 export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
+  const total = String(projects.length).padStart(2, "0");
 
   return (
     <article className="pb-24">
@@ -39,15 +80,27 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           </Link>
         </div>
 
-        <header className="mt-12 border-b border-rule pb-10">
+        <div
+          className="rise mt-8 flex items-baseline gap-3 border-b border-rule pb-5"
+          style={{ animationDelay: "0.1s" }}
+        >
+          <span className="font-mono text-sm text-ink-faint tabular-nums">
+            {project.index}
+            <span className="text-ink-faint/60"> / {total}</span>
+          </span>
+          <span className="h-px flex-1 bg-rule" aria-hidden />
+          <span className="label">§ Case study</span>
+        </div>
+
+        <header className="mt-10 border-b border-rule pb-10">
           <h1 className="font-serif display-lg">
             <span className="mask-clip">
-              <span className="mask-up" style={{ animationDelay: "0.1s" }}>
+              <span className="mask-up" style={{ animationDelay: "0.16s" }}>
                 {project.title}
               </span>
             </span>
           </h1>
-          <div className="rise" style={{ animationDelay: "0.22s" }}>
+          <div className="rise" style={{ animationDelay: "0.26s" }}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
               {project.summary}
             </p>
@@ -55,7 +108,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
 
           <div
             className="rise mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
-            style={{ animationDelay: "0.3s" }}
+            style={{ animationDelay: "0.34s" }}
           >
             {[
               ["Year", project.year],
@@ -90,29 +143,26 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
         </header>
       </div>
 
-      <div className="rise shell mt-12" style={{ animationDelay: "0.38s" }}>
-        <div className="relative aspect-[19/10] overflow-hidden border border-rule bg-paper-raised">
-          <Image
-            src={project.images[0]}
-            alt={`${project.title} interface`}
-            fill
-            sizes="(min-width: 1024px) 76rem, 100vw"
-            className="object-cover object-left-top"
-            priority
-          />
-        </div>
+      <div className="rise shell mt-12" style={{ animationDelay: "0.42s" }}>
+        <Figure
+          src={project.images[0]}
+          alt={`${project.title} interface`}
+          index="01"
+          caption={`${project.title} interface`}
+          priority
+        />
       </div>
 
       <div className="shell mt-20 grid gap-x-14 gap-y-16 md:grid-cols-12">
         <Reveal className="md:col-span-4">
-          <h2 className="label">The problem</h2>
+          <h2 className="label">01 — Problem</h2>
         </Reveal>
         <Reveal className="md:col-span-8" delay={0.05}>
           <p className="font-serif text-2xl leading-snug md:text-3xl">{project.problem}</p>
         </Reveal>
 
         <Reveal className="md:col-span-4">
-          <h2 className="label">What I built</h2>
+          <h2 className="label">02 — Build</h2>
         </Reveal>
         <div className="space-y-12 md:col-span-8">
           {project.build.map((b, i) => (
@@ -124,19 +174,16 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
         </div>
 
         <Reveal className="md:col-span-12">
-          <div className="relative aspect-[19/10] overflow-hidden border border-rule bg-paper-raised">
-            <Image
-              src={project.images[1]}
-              alt={`${project.title} — additional view`}
-              fill
-              sizes="(min-width: 1024px) 76rem, 100vw"
-              className="object-cover object-left-top"
-            />
-          </div>
+          <Figure
+            src={project.images[1]}
+            alt={`${project.title} — additional view`}
+            index="02"
+            caption={`${project.title} — additional view`}
+          />
         </Reveal>
 
         <Reveal className="md:col-span-4">
-          <h2 className="label">Decisions &amp; tradeoffs</h2>
+          <h2 className="label">03 — Decisions &amp; tradeoffs</h2>
         </Reveal>
         <div className="md:col-span-8">
           <dl className="divide-y divide-rule border-y border-rule">

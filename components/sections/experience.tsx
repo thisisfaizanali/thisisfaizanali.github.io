@@ -5,7 +5,7 @@ import { education, experience } from "@/lib/content";
 export function Experience() {
   return (
     <section id="experience" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading eyebrow="Experience" title="Where the work happened." italicFrom={2} />
+      <SectionHeading folio="02" eyebrow="Experience" title="Where the work happened." italicFrom={2} />
 
       <ol className="space-y-16">
         {experience.map((job, i) => (
@@ -55,6 +55,17 @@ export function Experience() {
                 {education.from} — {education.to} · {education.place}
               </p>
             </div>
+            <ul className="space-y-4 md:col-span-8">
+              {education.points.map((point) => (
+                <li key={point} className="flex gap-4 text-ink-muted">
+                  <span
+                    className="mt-[0.6em] size-1 shrink-0 bg-rule-strong transition-colors duration-500 group-hover:bg-accent"
+                    aria-hidden
+                  />
+                  <span className="leading-relaxed">{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
       </ol>

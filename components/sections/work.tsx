@@ -9,6 +9,7 @@ export function Work() {
   return (
     <section id="work" className="shell scroll-mt-24 py-24 md:py-32">
       <SectionHeading
+        folio="01"
         eyebrow="Selected work"
         title="Two things worth reading about."
         aside="2025"
@@ -78,13 +79,14 @@ export function Work() {
                 </div>
               </div>
 
-              <Link
-                href={`/work/${p.slug}`}
-                className="md:col-span-7 lg:col-span-8"
-                aria-label={`${p.title} case study`}
-              >
-                <ProjectMedia src={p.images[0]} alt="" priority={i === 0} />
-              </Link>
+              <div className="md:col-span-7 lg:col-span-8">
+                <p className="label mb-3">
+                  Fig. {p.index} — {p.title}
+                </p>
+                <Link href={`/work/${p.slug}`} aria-label={`${p.title} case study`}>
+                  <ProjectMedia src={p.images[0]} alt="" priority={i === 0} />
+                </Link>
+              </div>
             </article>
           </Reveal>
         ))}

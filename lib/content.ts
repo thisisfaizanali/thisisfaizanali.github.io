@@ -187,4 +187,9 @@ export const education = {
   place: "Bengaluru, Karnataka",
   from: "Dec 2020",
   to: "June 2024",
+  points: [
+    "Built the core CS foundation the frontend work still runs on — data structures and algorithms, DBMS, operating systems, and computer networks.",
+    "Where the algorithmic habit started, and kept going well past the syllabus: 700+ problems solved and Institute Rank 2 on the GeeksforGeeks leaderboard.",
+    "Taught myself the modern web stack — React, Next.js, and TypeScript — alongside the degree, and turned it into internship and full-time frontend work.",
+  ],
 } as const;

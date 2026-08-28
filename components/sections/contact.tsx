@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { SplitWords } from "@/components/motion/split-words";
+import { SectionHeading } from "@/components/section-heading";
 import { Magnetic } from "@/components/motion/magnetic";
 import { profile } from "@/lib/content";
 
@@ -31,15 +31,9 @@ export function Contact() {
   return (
     <section id="contact" className="scroll-mt-24 border-t border-rule py-24 md:py-36">
       <div className="shell">
-        <Reveal>
-          <span className="label">Contact</span>
-        </Reveal>
+        <SectionHeading folio="05" eyebrow="Contact" title="Let’s talk about what you’re building." italicFrom={3} />
 
-        <h2 className="mt-6 font-serif display-lg">
-          <SplitWords text="Let’s talk about what you’re building." italicFrom={3} />
-        </h2>
-
-        <Reveal className="mt-12 flex flex-col gap-6" delay={0.2}>
+        <Reveal className="flex flex-col gap-6" delay={0.2}>
           <div className="flex flex-wrap items-center gap-4">
             <Magnetic strength={0.22}>
               <a

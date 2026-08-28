@@ -13,18 +13,18 @@ const hasPortrait = existsSync(path.join(process.cwd(), "public", "portrait.jpg"
 export function About() {
   return (
     <section id="about" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading eyebrow="About" title="Interfaces, and the parts nobody demos." italicFrom={3} />
+      <SectionHeading folio="03" eyebrow="About" title="Interfaces, and the parts nobody demos." italicFrom={3} />
 
       <div className="grid gap-12 md:grid-cols-12 md:gap-14">
         <Reveal className="md:col-span-4">
           <div className="relative aspect-[4/5] overflow-hidden border border-rule bg-paper-raised">
             {hasPortrait ? (
               <Image
-                src="/portrait.jpg"
+                src="/portrait-v2.jpg"
                 alt={profile.name}
                 fill
                 sizes="(min-width: 768px) 32vw, 100vw"
-                className="object-cover object-[50%_16%] contrast-[1.06] saturate-[0.82]"
+                className="object-cover object-center contrast-[1.04] saturate-[0.9]"
               />
             ) : (
               <div className="flex h-full flex-col justify-between p-6">

@@ -10,15 +10,21 @@
 ------------------------------------------------------------------- */
 
 :root {
-  --paper: #faf8f4;
-  --paper-raised: #f4f1ea;
+  --paper: #eceded;
+  --paper-raised: #e2e4e4;
   --ink: #14110e;
-  --ink-muted: #6b6459;
-  --ink-faint: #9a9285;
-  --rule: #e2ddd3;
-  --rule-strong: #cec7b9;
+  --ink-muted: #575955;
+  --ink-faint: #8b8d88;
+  --rule: #d2d4d1;
+  --rule-strong: #bbbdb8;
   --accent: #b4531f;
-  --grain-opacity: 0.035;
+  --grain-opacity: 0.04;
+  /* Vertical margin rules that mark the content column — an engineered,
+     drafting-sheet feel rather than a flat fill. */
+  --guide: rgba(20, 17, 14, 0.055);
+  /* Cursor-tracking crosshair hairlines (grid-crosshair.tsx) — very low
+     alpha so the line reads as a guide, never a UI element. */
+  --crosshair: rgba(20, 17, 14, 0.08);
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -50,6 +56,8 @@
   --rule-strong: #3a372f;
   --accent: #d9713c;
   --grain-opacity: 0.055;
+  --guide: rgba(237, 233, 226, 0.045);
+  --crosshair: rgba(237, 233, 226, 0.07);
 
   --destructive: #d9694e;
   --accent-foreground: #0f0e0c;
@@ -108,6 +116,25 @@
   body {
     @apply bg-paper text-ink;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    /* Two hairlines marking the 76rem content column, fixed against scroll.
+       Off-screen (behind the padding) on viewports narrower than the column. */
+    background-image:
+      linear-gradient(
+        90deg,
+        transparent calc(50% - 608px),
+        var(--guide) calc(50% - 608px),
+        var(--guide) calc(50% - 607px),
+        transparent calc(50% - 607px)
+      ),
+      linear-gradient(
+        90deg,
+        transparent calc(50% + 607px),
+        var(--guide) calc(50% + 607px),
+        var(--guide) calc(50% + 608px),
+        transparent calc(50% + 608px)
+      );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
   }
 
   /* Paper grain. Fixed, non-interactive, ~3% — kills the flat digital look. */
