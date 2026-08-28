@@ -24,8 +24,8 @@ const SITE = "https://thisisfaizanali.github.io";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: `${profile.name} — ${profile.role}`,
-    template: `%s — ${profile.name}`,
+    default: `${profile.name} | ${profile.role}`,
+    template: `%s | ${profile.name}`,
   },
   description:
     "Full-Stack Engineer in Bengaluru building production software in React, Next.js, Node.js, and TypeScript. Selected work, case studies, and contact.",
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE,
     siteName: profile.name,
-    title: `${profile.name} — ${profile.role}`,
+    title: `${profile.name} | ${profile.role}`,
     description:
       "Full-Stack Engineer building production software in React, Next.js, Node.js, and TypeScript.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — ${profile.role}`,
+    title: `${profile.name} | ${profile.role}`,
     description:
       "Full-Stack Engineer building production software in React, Next.js, Node.js, and TypeScript.",
   },
