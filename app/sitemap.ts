@@ -4,6 +4,9 @@ import { getAllPosts } from "@/lib/blog";
 
 const SITE = "https://thisisfaizanali.github.io";
 
+// Required for `output: export` — Next won't prerender this route otherwise.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE, lastModified: new Date(), priority: 1 },
