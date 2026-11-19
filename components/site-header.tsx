@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { NavLink } from "@/components/nav-link";
@@ -16,19 +16,20 @@ const nav = [
   { label: "Contact", href: "/#contact" },
 ];
 
+const subscribeScroll = (cb: () => void) => {
+  window.addEventListener("scroll", cb, { passive: true });
+  return () => window.removeEventListener("scroll", cb);
+};
+
 export function SiteHeader() {
   const { scrollY } = useScroll();
-  const [lifted, setLifted] = useState(false);
+  // Read from the window so a page loaded mid-scroll starts lifted.
+  const lifted = useSyncExternalStore(subscribeScroll, () => window.scrollY > 24, () => false);
   const [hidden, setHidden] = useState(false);
-
-  useEffect(() => {
-    setLifted(window.scrollY > 24);
-  }, []);
 
   // Retreats on the way down, returns the moment you scroll up.
   useMotionValueEvent(scrollY, "change", (y) => {
     const prev = scrollY.getPrevious() ?? 0;
-    setLifted(y > 24);
     setHidden(y > prev && y > 220);
   });
 
