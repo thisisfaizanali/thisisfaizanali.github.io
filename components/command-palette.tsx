@@ -50,7 +50,7 @@ export function CommandPalette() {
       onOpenChange={setOpen}
       title="Command palette"
       description="Jump to a section, open a case study, or change the theme"
-      className="rounded-none border-rule"
+      className="rounded-[18px] border-0 bg-sheet shadow-[var(--shadow-lift)]"
     >
       <CommandInput placeholder="Jump to…" />
       <CommandList>
