@@ -162,7 +162,7 @@ export const experience = [
 ] as const;
 
 export const achievements = [
-  { figure: "700+", label: "DSA problems solved", note: "LeetCode and GeeksforGeeks" },
+  { figure: "750+", label: "DSA problems solved", note: "LeetCode and GeeksforGeeks" },
   { figure: "Rank 2", label: "Institute leaderboard", note: "GeeksforGeeks, among all CS peers" },
   { figure: "587", label: "of 10,000+ entrants", note: "GfG Weekly Contest 167" },
 ] as const;
@@ -184,7 +184,7 @@ export const stack = [
     ],
   },
   { group: "Backend & data", items: ["Node.js", "Express", "REST APIs", "PostgreSQL", "Prisma"] },
-  { group: "Tooling", items: ["Git", "GitHub", "Vercel", "Netlify", "Postman", "VS Code"] },
+  { group: "Tooling", items: ["Git", "GitHub", "Docker", "Vercel", "Netlify", "Postman", "VS Code"] },
 ] as const;
 
 export const education = {
@@ -195,7 +195,7 @@ export const education = {
   to: "June 2024",
   points: [
     "Built the core CS foundation the engineering work still runs on — data structures and algorithms, DBMS, operating systems, and computer networks.",
-    "Where the algorithmic habit started, and kept going well past the syllabus: 700+ problems solved and Institute Rank 2 on the GeeksforGeeks leaderboard.",
+    "Where the algorithmic habit started, and kept going well past the syllabus: 750+ problems solved and Institute Rank 2 on the GeeksforGeeks leaderboard.",
     "Taught myself the modern web stack — React, Next.js, and TypeScript — alongside the degree, and turned it into internship and full-time engineering work.",
   ],
 } as const;
