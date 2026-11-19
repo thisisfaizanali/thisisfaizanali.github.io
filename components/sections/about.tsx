@@ -13,7 +13,7 @@ const hasPortrait = existsSync(path.join(process.cwd(), "public", "portrait.jpg"
 export function About() {
   return (
     <section id="about" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading folio="03" eyebrow="About" title="Interfaces, and the parts nobody demos." italicFrom={3} />
+      <SectionHeading title="Interfaces, and the parts nobody demos." />
 
       <div className="grid gap-12 md:grid-cols-12 md:gap-14">
         <Reveal className="md:col-span-4">
