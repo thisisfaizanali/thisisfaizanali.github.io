@@ -1,6 +1,6 @@
 # faizanali.dev
 
-Personal portfolio and blog for Md Faizan Ali — a single-page site (Next.js App Router) with per-project case studies and a markdown-based blog, built as an editorial "spec sheet" rather than a template.
+Personal portfolio and blog for Md Faizan Ali, a single-page site (Next.js App Router) with per-project case studies and a markdown-based blog, built in a warm, daylight style (Ranade type, soft raised cards, one terracotta accent) rather than a template.
 
 Live at **[thisisfaizanali.github.io](https://thisisfaizanali.github.io)**.
 
