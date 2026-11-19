@@ -9,7 +9,7 @@ const elsewhere = [
 
 export function SiteFooter() {
   return (
-    <footer className="rule-bar mt-24">
+    <footer className="rule-bar">
       <div className="shell py-14 md:py-20">
         <p
           aria-hidden

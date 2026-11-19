@@ -1,12 +1,12 @@
 # faizanali.dev
 
-Personal portfolio and blog for Md Faizan Ali — a single-page site (Next.js App Router) with per-project case studies and a markdown-based blog, built as an editorial "spec sheet" rather than a template.
+Personal portfolio and blog for Md Faizan Ali, a single-page site (Next.js App Router) with per-project case studies and a markdown-based blog, built in a heavy, print-like style (Oswald capitals, concrete-grey paper, one orange accent) rather than a template.
 
 Live at **[thisisfaizanali.github.io](https://thisisfaizanali.github.io)**.
 
 ## Stack
 
-Next.js 16 (App Router, static export) · React 19 · TypeScript · Tailwind v4 · [motion](https://motion.dev) · next-themes · shadcn/ui
+Next.js 16 (App Router, static export) · React 19 · TypeScript · Tailwind v4 · next-themes · shadcn/ui
 
 ## Getting started
 

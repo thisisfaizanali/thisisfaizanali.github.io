@@ -116,9 +116,9 @@
   --font-sans: var(--font-archivo);
   --font-display: var(--font-oswald);
   --font-narrow: var(--font-archivo-narrow);
-  /* Transitional aliases so the sections not yet rebuilt still render; M3 removes them. */
-  --font-serif: var(--font-oswald);
-  --font-mono: var(--font-archivo-narrow);
+  /* Code blocks need a monospace; it is the one mono on the site and only inside posts. */
+  --font-code: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --color-scrim: var(--shadow-cast);
 
   --radius-sm: 0px;
   --radius-md: 0px;
@@ -303,36 +303,6 @@
     filter: none;
   }
 
-  /* Above-the-fold entrance, in CSS rather than JS. The hero must never depend
-     on hydration to become visible — `both` fill leaves it at the final state
-     if animations are disabled or reduced. */
-  .rise {
-    animation: rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .mask-up {
-    display: block;
-    animation: mask-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .mask-clip {
-    display: block;
-    overflow: hidden;
-    padding-bottom: 0.12em;
-  }
-
-  /* Fluid display sizes — no breakpoint stair-stepping. */
-  .display-xl {
-    font-size: clamp(3.25rem, 11vw, 9.5rem);
-    line-height: 0.9;
-  }
-  .display-lg {
-    font-size: clamp(2.5rem, 6.5vw, 5rem);
-    line-height: 0.98;
-  }
-  .display-md {
-    font-size: clamp(1.875rem, 3.6vw, 3rem);
-    line-height: 1.05;
-  }
-
   /* Markdown post body. Hand-styled against the site's own tokens instead of
      a typography plugin — a generic prose default would fight the spec-sheet
      look everywhere else on this site. */
@@ -343,11 +313,11 @@
     margin-top: 1.5em;
   }
   .prose-post h2 {
-    @apply font-serif text-2xl text-ink;
+    @apply font-display text-3xl uppercase leading-tight text-ink;
     margin-top: 2.2em;
   }
   .prose-post h3 {
-    @apply font-serif text-xl text-ink;
+    @apply font-display text-2xl uppercase text-ink;
     margin-top: 1.8em;
   }
   .prose-post ul {
@@ -360,7 +330,7 @@
     margin-top: 0.4em;
   }
   .prose-post code {
-    @apply border border-rule bg-paper-raised px-1.5 py-0.5 font-mono text-[0.8em] text-ink;
+    @apply border border-rule bg-paper-raised px-1.5 py-0.5 font-code text-[0.8em] text-ink;
   }
   .prose-post pre {
     @apply overflow-x-auto border border-rule bg-paper-raised p-4 text-sm;
@@ -369,7 +339,7 @@
     @apply border-0 bg-transparent p-0;
   }
   .prose-post blockquote {
-    @apply border-l-2 border-rule-strong pl-4 italic;
+    @apply border-l-[3px] border-ink pl-4;
   }
   .prose-post table {
     @apply w-full border-collapse text-base;
@@ -380,26 +350,6 @@
   }
   .prose-post img {
     @apply border border-rule;
-  }
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes mask-up {
-  from {
-    transform: translateY(110%);
-  }
-  to {
-    transform: none;
   }
 }
 
