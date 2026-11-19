@@ -47,7 +47,7 @@ export function Contact() {
           <button
             type="button"
             onClick={copy}
-            className="inline-flex items-center gap-2 border-2 border-band-ink px-3 py-1.5 text-sm font-medium hover:bg-band-ink hover:text-band"
+            className="inline-flex items-center gap-2 border-2 border-band-ink px-3 py-2.5 text-sm font-medium hover:bg-band-ink hover:text-band"
           >
             {copied ? (
               <>

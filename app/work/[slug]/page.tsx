@@ -136,7 +136,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
           {project.build.map((b) => (
             <div key={b.heading}>
               <h3 className="text-2xl">{b.heading}</h3>
-              <p className="mt-3 text-ink-muted">{b.body}</p>
+              <p className="mt-3 max-w-[65ch] text-ink-muted">{b.body}</p>
             </div>
           ))}
         </div>
@@ -164,19 +164,21 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
         </dl>
       </div>
 
-      <div className="shell rule-bar mt-24 flex flex-col gap-6 pt-8 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="label">Next case study</p>
-          <Link
-            href={`/work/${next.slug}`}
-            className="sweep mt-3 block font-display text-[clamp(2.5rem,6vw,5rem)] uppercase leading-none"
-          >
-            {next.title}
+      <div className="shell mt-24">
+        <div className="rule-bar flex flex-col gap-6 pt-8 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="label">Next case study</p>
+            <Link
+              href={`/work/${next.slug}`}
+              className="sweep mt-3 block font-display text-[clamp(2.5rem,6vw,5rem)] uppercase leading-none"
+            >
+              {next.title}
+            </Link>
+          </div>
+          <Link href="/#contact" className="btn btn-secondary w-fit">
+            Get in touch
           </Link>
         </div>
-        <Link href="/#contact" className="btn btn-secondary w-fit">
-          Get in touch
-        </Link>
       </div>
     </article>
   );
