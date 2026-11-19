@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Archivo, Archivo_Narrow, Oswald } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
@@ -10,13 +10,16 @@ import { MetadataRail } from "@/components/metadata-rail";
 import { GridCrosshair } from "@/components/grid-crosshair";
 import { profile } from "@/lib/content";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+const oswald = Oswald({ variable: "--font-oswald", subsets: ["latin"], weight: "700" });
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["400", "500"],
+});
+const archivoNarrow = Archivo_Narrow({
+  variable: "--font-archivo-narrow",
+  subsets: ["latin"],
+  weight: "500",
 });
 
 const SITE = "https://thisisfaizanali.github.io";
@@ -77,7 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full`}
+      className={`${oswald.variable} ${archivo.variable} ${archivoNarrow.variable} h-full`}
     >
       <body className="flex min-h-full flex-col">
         <script
