@@ -42,52 +42,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "resumind",
-    index: "01",
-    title: "Resumind",
-    tagline: "ATS scoring and job-specific feedback, with no backend at all.",
-    year: "2025",
-    role: "Design & build",
-    live: "https://ai-resume-analyzer-gilt-kappa.vercel.app/",
-    repo: "https://github.com/thisisfaizanali/ai-resume-analyzer",
-    images: ["/work/resumind-upload.png", "/work/resumind.png"],
-    stack: ["React Router v7", "TypeScript", "Puter.js", "Zustand", "Tailwind CSS", "Vite"],
-    summary:
-      "An AI resume analyzer that scores a CV against a specific job description and returns structured, actionable feedback — running auth, file storage, and model inference entirely client-side.",
-    problem:
-      "Generic resume checkers grade you against nothing in particular. You get a number and no idea what to change. I wanted the opposite: paste the job you actually want, get feedback tied to that posting. The catch was cost — an AI tool with per-user file storage and inference normally means a server, a database, and a bill that grows with every visitor.",
-    build: [
-      {
-        heading: "No backend, on purpose",
-        body: "Puter.js handles auth, file storage, and model inference from the browser, billed to the end user rather than to me. That removed the entire server tier: no API routes to secure, no keys to leak, no database to run. The whole app deploys as static output.",
-      },
-      {
-        heading: "A scoring pipeline, not a single prompt",
-        body: "Feedback comes from structured prompts that return typed JSON — ATS compatibility, tone, content, structure, and skills, each with its own score and specific fixes. Parsing into a schema instead of rendering raw model prose is what makes the results renderable and comparable across runs.",
-      },
-      {
-        heading: "A dashboard that survives real use",
-        body: "Uploads accumulate fast, so the tracker got search, sort, archive and restore, inline editing, and one-click export of feedback to a text file. Global state runs through Zustand — a small store beat prop-drilling across the upload, results, and dashboard routes.",
-      },
-    ],
-    decisions: [
-      {
-        call: "Client-side inference over a Node API layer",
-        why: "Kept hosting free and stateless. The tradeoff is a hard dependency on an external SDK and no server-side rate limiting — acceptable for a tool where each user brings their own quota.",
-      },
-      {
-        call: "Typed JSON responses over free-form model output",
-        why: "Made the UI deterministic. A malformed response fails one card instead of blanking the page.",
-      },
-      {
-        call: "React Router v7 over Next.js",
-        why: "The app is genuinely client-heavy — there is no SSR to gain when every operation happens in the browser. Less machinery for the same result.",
-      },
-    ],
-  },
-  {
     slug: "pocket-ledger",
-    index: "02",
+    index: "01",
     title: "Pocket Ledger",
     tagline: "An installable expense tracker built around speed of entry.",
     year: "2025",
@@ -130,6 +86,50 @@ export const projects: Project[] = [
       {
         call: "PWA over a React Native build",
         why: "One codebase, instant updates, no store review. Gives up native widgets and background sync — neither of which this app needs.",
+      },
+    ],
+  },
+  {
+    slug: "resumind",
+    index: "02",
+    title: "Resumind",
+    tagline: "ATS scoring and job-specific feedback, with no backend at all.",
+    year: "2025",
+    role: "Design & build",
+    live: "https://ai-resume-analyzer-gilt-kappa.vercel.app/",
+    repo: "https://github.com/thisisfaizanali/ai-resume-analyzer",
+    images: ["/work/resumind-upload.png", "/work/resumind.png"],
+    stack: ["React Router v7", "TypeScript", "Puter.js", "Zustand", "Tailwind CSS", "Vite"],
+    summary:
+      "An AI resume analyzer that scores a CV against a specific job description and returns structured, actionable feedback — running auth, file storage, and model inference entirely client-side.",
+    problem:
+      "Generic resume checkers grade you against nothing in particular. You get a number and no idea what to change. I wanted the opposite: paste the job you actually want, get feedback tied to that posting. The catch was cost — an AI tool with per-user file storage and inference normally means a server, a database, and a bill that grows with every visitor.",
+    build: [
+      {
+        heading: "No backend, on purpose",
+        body: "Puter.js handles auth, file storage, and model inference from the browser, billed to the end user rather than to me. That removed the entire server tier: no API routes to secure, no keys to leak, no database to run. The whole app deploys as static output.",
+      },
+      {
+        heading: "A scoring pipeline, not a single prompt",
+        body: "Feedback comes from structured prompts that return typed JSON — ATS compatibility, tone, content, structure, and skills, each with its own score and specific fixes. Parsing into a schema instead of rendering raw model prose is what makes the results renderable and comparable across runs.",
+      },
+      {
+        heading: "A dashboard that survives real use",
+        body: "Uploads accumulate fast, so the tracker got search, sort, archive and restore, inline editing, and one-click export of feedback to a text file. Global state runs through Zustand — a small store beat prop-drilling across the upload, results, and dashboard routes.",
+      },
+    ],
+    decisions: [
+      {
+        call: "Client-side inference over a Node API layer",
+        why: "Kept hosting free and stateless. The tradeoff is a hard dependency on an external SDK and no server-side rate limiting — acceptable for a tool where each user brings their own quota.",
+      },
+      {
+        call: "Typed JSON responses over free-form model output",
+        why: "Made the UI deterministic. A malformed response fails one card instead of blanking the page.",
+      },
+      {
+        call: "React Router v7 over Next.js",
+        why: "The app is genuinely client-heavy — there is no SSR to gain when every operation happens in the browser. Less machinery for the same result.",
       },
     ],
   },
