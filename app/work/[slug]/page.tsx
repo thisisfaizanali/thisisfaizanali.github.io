@@ -63,7 +63,6 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
   if (!project) notFound();
 
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
-  const total = String(projects.length).padStart(2, "0");
 
   return (
     <article className="pb-24">
@@ -73,10 +72,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
         </Link>
 
         <header className="mt-8">
-          <p className="label">
-            Case study {project.index} of {total}
-          </p>
-          <h1 className="mt-3 text-[clamp(2.75rem,6.5vw,5.5rem)] font-medium leading-[1.02]">
+          <h1 className="text-[clamp(2.75rem,6.5vw,5.5rem)] font-medium leading-[1.02]">
             {project.title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-ink-muted md:text-xl">{project.summary}</p>
@@ -189,7 +185,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
             <p className="label">Next case study</p>
             <Link
               href={`/work/${next.slug}`}
-              className="sweep mt-2 block text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-tight"
+              className="sweep mt-2 block text-[min(2rem,calc((100vw-7rem)/8.8))] font-semibold sm:text-[clamp(2rem,4.5vw,3.5rem)] leading-tight"
             >
               {next.title}
             </Link>

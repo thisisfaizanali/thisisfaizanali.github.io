@@ -1,8 +1,22 @@
+/* Hallmark · shape: kept site structure, home as hero then sections · genre: atmospheric · theme: Bloom (picked by Faizan from hero mockups) · redesign: full
+ * hero: Stage, headline left and the lead project card right · nav: edge-aligned with avatar · footer: avatar, name and links · imagery: the product (screenshots) in full colour · signature: the lead project as a raised card on faint ledger rules · bloom: daylight (light), dusk (dark)
+ * axes: light/grotesk-sans/warm · posture: committed · contrast: pass · fold: pass at 1280x800 · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: E, five reflex waivers and word-heavy case study and post screens (gate 58 notes) remain; dropped the labels above the 404 and case study headings and fixed the overflow, tokens, targets and wrapping, leaving copy density for the plan session */
+/* Hallmark · waive 81 · both .ledger-rules layers sit behind the real screenshot card or the contact block · the ruled lines are the faint ledger backdrop, not a picture standing in for one */
+/* Hallmark · waive 44c · the hero is a Stage with the lead project card beside the headline, approved in the browser · the section below keeps its own padding, so the first screen ends short of the fold */
+/* Hallmark · waive 79 · inner pages have a page head that runs straight into the article or screenshot, and the 404 page is one centred screen · there is no landing hero to fill */
+/* Hallmark · waive 77 · the blog index lists a single post, so the page head plus one post row is the whole section · padding the list with a visual would invent content the blog does not have */
+/* Hallmark · waive 78 · the blog index sets each post title as a list item heading under the page head, not a section heading · the blog keeps one h1 per page and a heading per post, so there is no section content to enlarge */
+/* Hallmark · dismissed 11 · the project image scales 1.02 inside an overflow-clipped card frame and is that card's only hover signal · the frame stays put and the crop of the screenshot shifts slightly */
+/* Hallmark · dismissed 29 · the sticky header and the command palette scrim blur what scrolls beneath them to keep nav and dialog text legible · both surfaces stay mostly opaque paper, with no glow or wash */
+/* Hallmark · dismissed 41 · .card text inherits --ink, which flips with the dark theme, so dark card surfaces never carry the light-mode text colour · checked in both themes */
+/* Hallmark · answered F16 · the native scrollbar is kept so the platform control stays familiar on the portfolio · the text selection already follows the accent */
+/* Hallmark · answered F18 · the dialog-header slot is the shadcn command palette dialog markup · it is not a Hallmark image slot and holds no picture */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is([data-theme="dark"] *));
 
 /* ------------------------------------------------------------------
    Bloom palette. Daylight on warm paper with two quiet blooms of colour;
@@ -58,7 +72,7 @@
   --radius: 0.625rem;
 }
 
-.dark {
+:root[data-theme="dark"] {
   --paper: oklch(19% 0.014 45);
   --paper-raised: oklch(22% 0.016 45);
   --paper-3: oklch(26% 0.018 45);
@@ -294,7 +308,7 @@
     color: var(--ink);
   }
   .btn-secondary {
-    padding: 0.875rem 0.25rem;
+    padding: 0.75rem 0.25rem;
     color: var(--ink-muted);
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -322,8 +336,8 @@
       transparent 0 27px,
       var(--rule) 27px 28px
     );
-    -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent);
-    mask-image: radial-gradient(closest-side, #000 40%, transparent);
+    -webkit-mask-image: radial-gradient(closest-side, var(--ink) 40%, transparent);
+    mask-image: radial-gradient(closest-side, var(--ink) 40%, transparent);
     opacity: 0.8;
   }
 

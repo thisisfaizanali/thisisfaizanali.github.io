@@ -41,11 +41,11 @@ export function Contact() {
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <a
               href={`mailto:${profile.email}`}
-              className="sweep-out break-all text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium leading-tight"
+              className="sweep-out break-all text-[min(1.5rem,calc((100vw-7rem)/13.6))] sm:text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium leading-tight"
             >
               {profile.email}
             </a>
-            <button type="button" onClick={copy} className="pill px-4 py-2.5 text-sm">
+            <button type="button" onClick={copy} className="pill px-4 py-3 text-sm">
               {copied ? (
                 <>
                   <Check className="size-3.5" strokeWidth={2} aria-hidden /> Copied

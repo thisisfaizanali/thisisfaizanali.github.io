@@ -27,7 +27,7 @@ export function Hero() {
       </div>
 
       <div className="relative md:col-span-6">
-        <div aria-hidden className="ledger-rules pointer-events-none absolute -inset-10 -z-10" />
+        <div aria-hidden className="ledger-rules pointer-events-none absolute -inset-y-10 -inset-x-5 -z-10 md:-inset-x-10" />
         <Link
           href={`/work/${lead.slug}`}
           aria-label={`${lead.title} case study`}

@@ -1,14 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 
+const subscribeNoop = () => () => {};
+
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
 
   const dark = resolvedTheme === "dark";
 
@@ -19,7 +19,7 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={mounted ? `Switch to ${dark ? "light" : "dark"} theme` : "Switch theme"}
-      className="pill grid size-10 place-items-center p-0 text-ink-muted hover:text-ink"
+      className="pill grid size-11 place-items-center p-0 text-ink-muted hover:text-ink"
     >
       <span className="relative block size-4" suppressHydrationWarning>
         <Sun
