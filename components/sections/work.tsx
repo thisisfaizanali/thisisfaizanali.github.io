@@ -8,13 +8,7 @@ import { projects } from "@/lib/content";
 export function Work() {
   return (
     <section id="work" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading
-        folio="01"
-        eyebrow="Selected work"
-        title="Two things worth reading about."
-        aside="2025"
-        italicFrom={3}
-      />
+      <SectionHeading title="What have you built?" />
 
       <ul className="space-y-24 md:space-y-36">
         {projects.map((p, i) => (

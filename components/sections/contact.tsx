@@ -31,7 +31,7 @@ export function Contact() {
   return (
     <section id="contact" className="scroll-mt-24 border-t border-rule py-24 md:py-36">
       <div className="shell">
-        <SectionHeading folio="05" eyebrow="Contact" title="Let’s talk about what you’re building." italicFrom={3} />
+        <SectionHeading title="How do I reach you?" />
 
         <Reveal className="flex flex-col gap-6" delay={0.2}>
           <div className="flex flex-wrap items-center gap-4">

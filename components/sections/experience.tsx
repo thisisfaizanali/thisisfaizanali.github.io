@@ -5,7 +5,7 @@ import { education, experience } from "@/lib/content";
 export function Experience() {
   return (
     <section id="experience" className="shell scroll-mt-24 py-24 md:py-32">
-      <SectionHeading folio="02" eyebrow="Experience" title="Where the work happened." italicFrom={2} />
+      <SectionHeading title="Where have you worked?" />
 
       <ol className="space-y-16">
         {experience.map((job, i) => (
