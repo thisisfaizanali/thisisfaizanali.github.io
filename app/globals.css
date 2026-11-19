@@ -53,29 +53,45 @@
   --input: var(--rule);
   --ring: var(--focus);
   --radius: 0rem;
+
+  /* The night pour's values live here with the other tokens; `.dark` below
+     only re-points names at them, so no colour literal sits outside this block. */
+  --night-paper: oklch(27% 0.006 270);
+  --night-paper-raised: oklch(31% 0.007 270);
+  --night-paper-3: oklch(36% 0.008 270);
+  --night-plate: oklch(33% 0.007 270);
+  --night-ink: oklch(95% 0.006 80);
+  --night-ink-muted: oklch(86% 0.006 80);
+  --night-ink-faint: oklch(76% 0.008 80);
+  --night-rule: oklch(38% 0.008 270);
+  --night-accent: oklch(70% 0.21 40);
+  --night-accent-deep: oklch(52% 0.17 40);
+  --night-focus: oklch(78% 0.15 45);
+  --night-band: oklch(15% 0.005 270);
+  --night-shadow-cast: oklch(12% 0.005 270);
+  --night-destructive: oklch(62% 0.19 27);
 }
 
 .dark {
-  --paper: oklch(27% 0.006 270);
-  --paper-raised: oklch(31% 0.007 270);
-  --paper-3: oklch(36% 0.008 270);
-  --plate: oklch(33% 0.007 270);
-  --plate-ink: oklch(95% 0.006 80);
-  --ink: oklch(95% 0.006 80);
-  --ink-muted: oklch(86% 0.006 80);
-  --ink-faint: oklch(76% 0.008 80);
-  --rule: oklch(38% 0.008 270);
-  --accent: oklch(70% 0.21 40);
-  --accent-deep: oklch(52% 0.17 40);
-  --focus: oklch(78% 0.15 45);
-  --band: oklch(15% 0.005 270);
-  --band-ink: oklch(95% 0.006 80);
-  --shadow-cast: oklch(12% 0.005 270);
+  --paper: var(--night-paper);
+  --paper-raised: var(--night-paper-raised);
+  --paper-3: var(--night-paper-3);
+  --plate: var(--night-plate);
+  --plate-ink: var(--night-ink);
+  --ink: var(--night-ink);
+  --ink-muted: var(--night-ink-muted);
+  --ink-faint: var(--night-ink-faint);
+  --rule: var(--night-rule);
+  --accent: var(--night-accent);
+  --accent-deep: var(--night-accent-deep);
+  --focus: var(--night-focus);
+  --band: var(--night-band);
+  --band-ink: var(--night-ink);
+  --shadow-cast: var(--night-shadow-cast);
   --grain-opacity: 0.05;
   --grain-blend: screen;
 
-  --accent-foreground: oklch(18% 0.005 270);
-  --destructive: oklch(62% 0.19 27);
+  --destructive: var(--night-destructive);
 }
 
 @theme inline {
@@ -166,6 +182,10 @@
   ::selection {
     background: color-mix(in oklab, var(--accent) 35%, transparent);
     color: inherit;
+  }
+
+  html {
+    scrollbar-color: var(--ink-faint) var(--paper);
   }
 
   :focus-visible {

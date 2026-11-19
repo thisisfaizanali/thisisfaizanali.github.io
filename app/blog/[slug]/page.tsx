@@ -55,7 +55,7 @@ export default async function BlogPost({ params }: PageProps<"/blog/[slug]">) {
       </div>
 
       <div className="shell mt-14">
-        <div className="prose-post max-w-3xl">
+        <div className="prose-post max-w-[65ch]">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
