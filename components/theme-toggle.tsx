@@ -19,7 +19,7 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={mounted ? `Switch to ${dark ? "light" : "dark"} theme` : "Switch theme"}
-      className="pill grid size-10 place-items-center p-0 text-ink-muted hover:text-ink"
+      className="pill grid size-11 place-items-center p-0 text-ink-muted hover:text-ink"
     >
       <span className="relative block size-4" suppressHydrationWarning>
         <Sun

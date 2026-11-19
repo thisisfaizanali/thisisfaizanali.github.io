@@ -189,7 +189,7 @@ export default async function CaseStudy({ params }: PageProps<"/work/[slug]">) {
             <p className="label">Next case study</p>
             <Link
               href={`/work/${next.slug}`}
-              className="sweep mt-2 block text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-tight"
+              className="sweep mt-2 block text-[min(2rem,calc((100vw-7rem)/8.8))] font-semibold sm:text-[clamp(2rem,4.5vw,3.5rem)] leading-tight"
             >
               {next.title}
             </Link>

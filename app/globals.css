@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is([data-theme="dark"] *));
 
 /* ------------------------------------------------------------------
    Bloom palette. Daylight on warm paper with two quiet blooms of colour;
@@ -58,7 +58,7 @@
   --radius: 0.625rem;
 }
 
-.dark {
+:root[data-theme="dark"] {
   --paper: oklch(19% 0.014 45);
   --paper-raised: oklch(22% 0.016 45);
   --paper-3: oklch(26% 0.018 45);
@@ -294,7 +294,7 @@
     color: var(--ink);
   }
   .btn-secondary {
-    padding: 0.875rem 0.25rem;
+    padding: 0.75rem 0.25rem;
     color: var(--ink-muted);
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -322,8 +322,8 @@
       transparent 0 27px,
       var(--rule) 27px 28px
     );
-    -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent);
-    mask-image: radial-gradient(closest-side, #000 40%, transparent);
+    -webkit-mask-image: radial-gradient(closest-side, var(--ink) 40%, transparent);
+    mask-image: radial-gradient(closest-side, var(--ink) 40%, transparent);
     opacity: 0.8;
   }
 
