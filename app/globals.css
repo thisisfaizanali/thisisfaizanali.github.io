@@ -365,8 +365,8 @@
   }
 
   /* Markdown post body. Hand-styled against the site's own tokens instead of
-     a typography plugin — a generic prose default would fight the spec-sheet
-     look everywhere else on this site. */
+     a typography plugin: a generic prose default would fight the soft cards
+     and Ranade type used everywhere else on this site. */
   .prose-post {
     @apply text-lg leading-relaxed text-ink-muted;
   }
@@ -374,11 +374,11 @@
     margin-top: 1.5em;
   }
   .prose-post h2 {
-    @apply font-serif text-2xl text-ink;
-    margin-top: 2.2em;
+    @apply font-display text-3xl leading-tight font-semibold text-ink;
+    margin-top: 2em;
   }
   .prose-post h3 {
-    @apply font-serif text-xl text-ink;
+    @apply font-display text-2xl font-semibold text-ink;
     margin-top: 1.8em;
   }
   .prose-post ul {
@@ -391,16 +391,16 @@
     margin-top: 0.4em;
   }
   .prose-post code {
-    @apply border border-rule bg-paper-raised px-1.5 py-0.5 font-mono text-[0.8em] text-ink;
+    @apply rounded-md border border-rule bg-paper-raised px-1.5 py-0.5 font-code text-[0.8em] text-ink;
   }
   .prose-post pre {
-    @apply overflow-x-auto border border-rule bg-paper-raised p-4 text-sm;
+    @apply overflow-x-auto rounded-[10px] border border-rule bg-paper-raised p-4 text-sm;
   }
   .prose-post pre code {
-    @apply border-0 bg-transparent p-0;
+    @apply rounded-none border-0 bg-transparent p-0;
   }
   .prose-post blockquote {
-    @apply border-l-2 border-rule-strong pl-4 italic;
+    @apply border-l-[3px] border-accent pl-4 not-italic;
   }
   .prose-post table {
     @apply w-full border-collapse text-base;
@@ -410,7 +410,7 @@
     @apply border border-rule px-3 py-2 text-left align-top;
   }
   .prose-post img {
-    @apply border border-rule;
+    @apply rounded-[10px] border border-rule;
   }
 }
 
