@@ -69,7 +69,7 @@ const personSchema = {
   url: SITE,
   address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
   sameAs: [profile.links.github, profile.links.linkedin, profile.links.leetcode],
-  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "API design"],
+  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "Docker", "API design"],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
