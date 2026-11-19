@@ -125,9 +125,6 @@
   --font-display: "Ranade", ui-sans-serif, system-ui, sans-serif;
   --font-figure: "Gambarino", Georgia, serif;
   --font-code: var(--font-geist-mono), ui-monospace, monospace;
-  /* Transitional aliases so untouched sections still resolve; B3 removes them. */
-  --font-serif: "Ranade", ui-sans-serif, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -334,39 +331,9 @@
     @apply mx-auto w-full max-w-[76rem] px-6 md:px-10 lg:px-16;
   }
 
-  /* Above-the-fold entrance, in CSS rather than JS. The hero must never depend
-     on hydration to become visible — `both` fill leaves it at the final state
-     if animations are disabled or reduced. */
-  .rise {
-    animation: rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .mask-up {
-    display: block;
-    animation: mask-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .mask-clip {
-    display: block;
-    overflow: hidden;
-    padding-bottom: 0.12em;
-  }
-
-  /* Fluid display sizes — no breakpoint stair-stepping. */
-  .display-xl {
-    font-size: clamp(3.25rem, 11vw, 9.5rem);
-    line-height: 0.9;
-  }
-  .display-lg {
-    font-size: clamp(2.5rem, 6.5vw, 5rem);
-    line-height: 0.98;
-  }
-  .display-md {
-    font-size: clamp(1.875rem, 3.6vw, 3rem);
-    line-height: 1.05;
-  }
-
   /* Markdown post body. Hand-styled against the site's own tokens instead of
-     a typography plugin — a generic prose default would fight the spec-sheet
-     look everywhere else on this site. */
+     a typography plugin: a generic prose default would fight the soft cards
+     and Ranade type used everywhere else on this site. */
   .prose-post {
     @apply text-lg leading-relaxed text-ink-muted;
   }
@@ -374,11 +341,11 @@
     margin-top: 1.5em;
   }
   .prose-post h2 {
-    @apply font-serif text-2xl text-ink;
-    margin-top: 2.2em;
+    @apply font-display text-3xl leading-tight font-semibold text-ink;
+    margin-top: 2em;
   }
   .prose-post h3 {
-    @apply font-serif text-xl text-ink;
+    @apply font-display text-2xl font-semibold text-ink;
     margin-top: 1.8em;
   }
   .prose-post ul {
@@ -391,16 +358,16 @@
     margin-top: 0.4em;
   }
   .prose-post code {
-    @apply border border-rule bg-paper-raised px-1.5 py-0.5 font-mono text-[0.8em] text-ink;
+    @apply rounded-md border border-rule bg-paper-raised px-1.5 py-0.5 font-code text-[0.8em] text-ink;
   }
   .prose-post pre {
-    @apply overflow-x-auto border border-rule bg-paper-raised p-4 text-sm;
+    @apply overflow-x-auto rounded-[10px] border border-rule bg-paper-raised p-4 text-sm;
   }
   .prose-post pre code {
-    @apply border-0 bg-transparent p-0;
+    @apply rounded-none border-0 bg-transparent p-0;
   }
   .prose-post blockquote {
-    @apply border-l-2 border-rule-strong pl-4 italic;
+    @apply border-l-[3px] border-accent pl-4 not-italic;
   }
   .prose-post table {
     @apply w-full border-collapse text-base;
@@ -410,27 +377,7 @@
     @apply border border-rule px-3 py-2 text-left align-top;
   }
   .prose-post img {
-    @apply border border-rule;
-  }
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes mask-up {
-  from {
-    transform: translateY(110%);
-  }
-  to {
-    transform: none;
+    @apply rounded-[10px] border border-rule;
   }
 }
 
