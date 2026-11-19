@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     "Node.js",
     "TypeScript",
     "PostgreSQL",
+    "Docker",
     "REST APIs",
     "Bengaluru",
     "Md Faizan Ali",
