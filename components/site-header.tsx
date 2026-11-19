@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { NavLink } from "@/components/nav-link";
@@ -15,19 +16,20 @@ const nav = [
   { label: "Contact", href: "/#contact" },
 ];
 
+const subscribeScroll = (cb: () => void) => {
+  window.addEventListener("scroll", cb, { passive: true });
+  return () => window.removeEventListener("scroll", cb);
+};
+
 export function SiteHeader() {
   const { scrollY } = useScroll();
-  const [lifted, setLifted] = useState(false);
+  // Read from the window so a page loaded mid-scroll starts lifted.
+  const lifted = useSyncExternalStore(subscribeScroll, () => window.scrollY > 24, () => false);
   const [hidden, setHidden] = useState(false);
-
-  useEffect(() => {
-    setLifted(window.scrollY > 24);
-  }, []);
 
   // Retreats on the way down, returns the moment you scroll up.
   useMotionValueEvent(scrollY, "change", (y) => {
     const prev = scrollY.getPrevious() ?? 0;
-    setLifted(y > 24);
     setHidden(y > prev && y > 220);
   });
 
@@ -35,40 +37,51 @@ export function SiteHeader() {
     <motion.header
       animate={{ y: hidden ? "-100%" : "0%" }}
       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-        lifted ? "border-rule bg-paper/80 backdrop-blur-md" : "border-transparent"
+      className={`sticky top-0 z-50 transition-colors duration-300 ${
+        lifted ? "bg-paper/85 backdrop-blur-md" : ""
       }`}
     >
-      <div className="shell flex h-16 items-center justify-between gap-6">
+      <div className="shell flex h-[4.5rem] items-center justify-between gap-6">
         <Link
           href="/#top"
-          className="group/logo font-serif text-xl leading-none tracking-tight md:text-2xl"
+          className="flex items-center gap-3"
           aria-label={`${profile.name}, home`}
         >
-          <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/logo:-translate-y-px">
-            Faizan Ali
-          </span>
-          <span className="mt-1 block h-px w-0 bg-ink transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/logo:w-full" />
+          <Image
+            src="/portrait-v2.jpg"
+            alt=""
+            width={40}
+            height={40}
+            className="avatar size-10"
+          />
+          <span className="text-lg font-semibold tracking-[-0.01em]">{profile.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
           {nav.map((item) => (
-            <NavLink key={item.href} href={item.href} className="label">
+            <NavLink
+              key={item.href}
+              href={item.href}
+              className="text-[0.95rem] font-medium text-ink-faint hover:text-ink"
+            >
               {item.label}
             </NavLink>
           ))}
         </nav>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-4">
           <a
             href={profile.links.resume}
             target="_blank"
             rel="noopener noreferrer"
-            className="label hidden sweep hover:text-ink sm:inline-block"
+            className="sweep hidden text-[0.95rem] font-medium text-ink-muted sm:inline-block"
           >
             Résumé
           </a>
-          <span className="mx-3 hidden h-4 w-px bg-rule sm:block" aria-hidden />
+          <a href={`mailto:${profile.email}`} className="pill btn-primary hidden sm:inline-flex">
+            <span className="cap" aria-hidden />
+            Email me
+          </a>
           <ThemeToggle />
         </div>
       </div>

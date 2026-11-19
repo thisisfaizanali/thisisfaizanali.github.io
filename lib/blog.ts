@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-// Posts are markdown files with frontmatter — no CMS, no database. Publish
+// Posts are markdown files with frontmatter: no CMS, no database. Publish
 // by adding a .md file to content/blog/, committing, and pushing.
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 

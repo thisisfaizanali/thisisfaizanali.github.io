@@ -1,36 +1,62 @@
+/* Hallmark · shape: kept site structure, home as hero then sections · genre: atmospheric · theme: Bloom (picked by Faizan from hero mockups) · redesign: full
+ * hero: Stage, headline left and the lead project card right · nav: edge-aligned with avatar · footer: avatar, name and links · imagery: the product (screenshots) in full colour · signature: the lead project as a raised card on faint ledger rules · bloom: daylight (light), dusk (dark)
+ * axes: light/grotesk-sans/warm · posture: committed · contrast: pass · fold: pass at 1280x800 · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: E, five reflex waivers and word-heavy case study and post screens (gate 58 notes) remain; dropped the labels above the 404 and case study headings and fixed the overflow, tokens, targets and wrapping, leaving copy density for the plan session */
+/* Hallmark · waive 81 · both .ledger-rules layers sit behind the real screenshot card or the contact block · the ruled lines are the faint ledger backdrop, not a picture standing in for one */
+/* Hallmark · waive 44c · the hero is a Stage with the lead project card beside the headline, approved in the browser · the section below keeps its own padding, so the first screen ends short of the fold */
+/* Hallmark · waive 79 · inner pages have a page head that runs straight into the article or screenshot, and the 404 page is one centred screen · there is no landing hero to fill */
+/* Hallmark · waive 77 · the blog index lists a single post, so the page head plus one post row is the whole section · padding the list with a visual would invent content the blog does not have */
+/* Hallmark · waive 78 · the blog index sets each post title as a list item heading under the page head, not a section heading · the blog keeps one h1 per page and a heading per post, so there is no section content to enlarge */
+/* Hallmark · dismissed 11 · the project image scales 1.02 inside an overflow-clipped card frame and is that card's only hover signal · the frame stays put and the crop of the screenshot shifts slightly */
+/* Hallmark · dismissed 29 · the sticky header and the command palette scrim blur what scrolls beneath them to keep nav and dialog text legible · both surfaces stay mostly opaque paper, with no glow or wash */
+/* Hallmark · dismissed 41 · .card text inherits --ink, which flips with the dark theme, so dark card surfaces never carry the light-mode text colour · checked in both themes */
+/* Hallmark · answered F16 · the native scrollbar is kept so the platform control stays familiar on the portfolio · the text selection already follows the accent */
+/* Hallmark · answered F18 · the dialog-header slot is the shadcn command palette dialog markup · it is not a Hallmark image slot and holds no picture */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is([data-theme="dark"] *));
 
 /* ------------------------------------------------------------------
-   Editorial palette. Warm paper / ink, one ochre accent used sparingly.
-   shadcn's variable names are kept so its components inherit the theme.
+   Bloom palette. Daylight on warm paper with two quiet blooms of colour;
+   dark mode is "dusk", a warm umber night of the same hues. shadcn's
+   variable names are kept so its components inherit the theme.
 ------------------------------------------------------------------- */
 
 :root {
-  --paper: #9a9d9b;
-  --paper-raised: #8e918f;
-  --ink: #14110e;
-  --ink-muted: #33352f;
-  --ink-faint: #55584f;
-  --rule: #7c7f7d;
-  --rule-strong: #686b69;
-  --accent: #b4531f;
-  --grain-opacity: 0.04;
-  /* Vertical margin rules that mark the content column — an engineered,
-     drafting-sheet feel rather than a flat fill. */
-  --guide: rgba(20, 17, 14, 0.14);
-  /* Cursor-tracking crosshair hairlines (grid-crosshair.tsx) — very low
-     alpha so the line reads as a guide, never a UI element. */
-  --crosshair: rgba(20, 17, 14, 0.18);
+  --paper: oklch(97% 0.010 72);
+  --paper-raised: oklch(94.6% 0.013 70);
+  --paper-3: oklch(91.5% 0.016 66);
+  --sheet: oklch(98.7% 0.007 78); /* cards and pills sit on this */
+  --ink: oklch(21% 0.024 40);
+  --ink-muted: oklch(31% 0.022 46);
+  --ink-faint: oklch(49% 0.02 56);
+  --rule: oklch(88% 0.014 64);
+  --rule-strong: oklch(80% 0.018 60);
+  --accent: oklch(53% 0.145 36); /* terracotta: links, the rubber cap, one figure */
+  --accent-2: oklch(66% 0.10 55);
+  --accent-soft: oklch(53% 0.145 36 / 0.11);
+  --focus: oklch(53% 0.145 36);
+  --rubber: oklch(55% 0.15 34);
+  --rubber-hi: oklch(66% 0.125 42);
+  --rubber-lo: oklch(43% 0.125 31);
+  --bezel: oklch(92.5% 0.014 68);
+  --hi: oklch(99.6% 0.006 80 / 0.75);
+  --shade-1: oklch(21% 0.024 40 / 0.08);
+  --shade-2: oklch(21% 0.024 40 / 0.16);
+  --shade-3: oklch(30% 0.06 40 / 0.28);
+  --shadow-card: 0 1px 2px oklch(21% 0.024 40 / 0.06), 0 18px 36px -18px oklch(21% 0.024 40 / 0.26);
+  --shadow-lift: 0 2px 4px oklch(21% 0.024 40 / 0.07), 0 36px 72px -32px oklch(45% 0.1 40 / 0.34);
+  --bloom-1: oklch(53% 0.145 36 / 0.08);
+  --bloom-2: oklch(66% 0.10 55 / 0.05);
+  --grain-opacity: 0.05;
 
   --background: var(--paper);
   --foreground: var(--ink);
-  --card: var(--paper);
+  --card: var(--sheet);
   --card-foreground: var(--ink);
-  --popover: var(--paper);
+  --popover: var(--sheet);
   --popover-foreground: var(--ink);
   --primary: var(--ink);
   --primary-foreground: var(--paper);
@@ -38,29 +64,41 @@
   --secondary-foreground: var(--ink);
   --muted: var(--paper-raised);
   --muted-foreground: var(--ink-muted);
-  --accent-foreground: var(--paper);
-  --destructive: #a3341c;
+  --accent-foreground: oklch(98.5% 0.008 72);
+  --destructive: oklch(52% 0.19 27);
   --border: var(--rule);
   --input: var(--rule);
-  --ring: var(--accent);
-  --radius: 0.125rem;
+  --ring: var(--focus);
+  --radius: 0.625rem;
 }
 
-.dark {
-  --paper: #0f0e0c;
-  --paper-raised: #17150f;
-  --ink: #ede9e2;
-  --ink-muted: #8a8378;
-  --ink-faint: #635d54;
-  --rule: #26241f;
-  --rule-strong: #3a372f;
-  --accent: #d9713c;
-  --grain-opacity: 0.055;
-  --guide: rgba(237, 233, 226, 0.045);
-  --crosshair: rgba(237, 233, 226, 0.07);
-
-  --destructive: #d9694e;
-  --accent-foreground: #0f0e0c;
+:root[data-theme="dark"] {
+  --paper: oklch(19% 0.014 45);
+  --paper-raised: oklch(22% 0.016 45);
+  --paper-3: oklch(26% 0.018 45);
+  --sheet: oklch(24% 0.016 45);
+  --ink: oklch(95% 0.010 72);
+  --ink-muted: oklch(85% 0.014 66);
+  --ink-faint: oklch(70% 0.02 60);
+  --rule: oklch(31% 0.018 45);
+  --rule-strong: oklch(38% 0.02 45);
+  --accent: oklch(70% 0.13 40);
+  --accent-2: oklch(72% 0.09 60);
+  --accent-soft: oklch(70% 0.13 40 / 0.14);
+  --focus: oklch(72% 0.13 40);
+  --bezel: oklch(28% 0.018 45);
+  --hi: oklch(99% 0.01 80 / 0.10);
+  --shade-1: oklch(5% 0.01 40 / 0.35);
+  --shade-2: oklch(5% 0.01 40 / 0.5);
+  --shade-3: oklch(5% 0.01 40 / 0.6);
+  --shadow-card: 0 1px 2px oklch(5% 0.01 40 / 0.4), 0 18px 36px -18px oklch(5% 0.01 40 / 0.7);
+  --shadow-lift: 0 2px 4px oklch(5% 0.01 40 / 0.4), 0 36px 72px -32px oklch(5% 0.01 40 / 0.8);
+  --bloom-1: oklch(70% 0.13 40 / 0.07);
+  --bloom-2: oklch(72% 0.09 60 / 0.04);
+  --accent-foreground: oklch(19% 0.014 45);
+  --destructive: oklch(65% 0.17 27);
+  /* The rubber cap keeps its light-mode values: it is a physical object,
+     not a surface, so it should not re-theme. */
 }
 
 @theme inline {
@@ -68,13 +106,19 @@
   --color-foreground: var(--foreground);
   --color-paper: var(--paper);
   --color-paper-raised: var(--paper-raised);
+  --color-paper-3: var(--paper-3);
+  --color-sheet: var(--sheet);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-ink-faint: var(--ink-faint);
   --color-rule: var(--rule);
   --color-rule-strong: var(--rule-strong);
   --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
   --color-accent-foreground: var(--accent-foreground);
+  --color-focus: var(--focus);
+  --color-bezel: var(--bezel);
 
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -91,14 +135,15 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-instrument-serif);
+  --font-sans: "Ranade", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Ranade", ui-sans-serif, system-ui, sans-serif;
+  --font-figure: "Gambarino", Georgia, serif;
+  --font-code: var(--font-geist-mono), ui-monospace, monospace;
 
-  --radius-sm: 1px;
-  --radius-md: 2px;
-  --radius-lg: 2px;
-  --radius-xl: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-xl: 18px;
 }
 
 @layer base {
@@ -111,30 +156,31 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     @apply bg-paper text-ink;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
-    /* Two hairlines marking the 76rem content column, fixed against scroll.
-       Off-screen (behind the padding) on viewports narrower than the column. */
-    background-image:
-      linear-gradient(
-        90deg,
-        transparent calc(50% - 608px),
-        var(--guide) calc(50% - 608px),
-        var(--guide) calc(50% - 607px),
-        transparent calc(50% - 607px)
-      ),
-      linear-gradient(
-        90deg,
-        transparent calc(50% + 607px),
-        var(--guide) calc(50% + 607px),
-        var(--guide) calc(50% + 608px),
-        transparent calc(50% + 608px)
-      );
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    overflow-x: clip;
+    /* Own stacking context so the z-index:-1 blooms sit above the html
+       background rather than falling behind it. */
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Two fixed blooms of colour, top right and bottom left, behind content. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 85% 10%, var(--bloom-1), transparent 70%),
+      radial-gradient(50% 45% at 10% 95%, var(--bloom-2), transparent 70%);
   }
 
   /* Paper grain. Fixed, non-interactive, ~3% — kills the flat digital look. */
@@ -149,19 +195,23 @@
   }
 
   ::selection {
-    background: var(--accent);
-    color: var(--accent-foreground);
+    background: var(--accent-soft);
+    color: inherit;
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--focus);
     outline-offset: 3px;
   }
 
   h1, h2, h3 {
-    @apply font-serif font-normal;
-    letter-spacing: -0.018em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.024em;
+    line-height: 1.06;
     text-wrap: balance;
+    overflow-wrap: break-word;
+    min-width: 0;
   }
 
   p {
@@ -170,75 +220,134 @@
 }
 
 @layer components {
-  /* Small-caps mono label used for every section eyebrow. */
+  /* Plain sentence-case caption; no tracking or caps, so it reads as text
+     rather than as a spec-sheet stamp. */
   .label {
-    @apply font-mono text-[0.6875rem] uppercase text-ink-muted;
-    letter-spacing: 0.16em;
+    @apply font-sans text-[0.875rem] font-medium text-ink-faint;
   }
 
-  /* Ink underline that sweeps in from the left. No colour change on hover. */
-  .sweep {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    background-size: 0% 1px;
-    transition: background-size 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
+  /* Underline appears on hover only; links that already read as links at rest
+     use .sweep-out instead. */
   .sweep:hover,
   .sweep:focus-visible {
-    background-size: 100% 1px;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--accent);
   }
 
-  /* Same sweep, but starts visible and retracts — for persistent links. */
+  /* Underlined at rest, accent on hover. Colour is the only thing that
+     animates, so it never costs layout or paint of the text itself. */
   .sweep-out {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-repeat: no-repeat;
-    background-position: 100% 100%;
-    background-size: 100% 1px;
-    transition: background-size 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 150ms ease-out;
   }
   .sweep-out:hover,
   .sweep-out:focus-visible {
-    background-size: 0% 1px;
+    text-decoration-color: var(--accent);
+  }
+
+  /* Raised card lit from above: soft warm shadow plus a top highlight. */
+  .card {
+    background: var(--sheet);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card), inset 0 1px 0 var(--hi);
+  }
+  .card-lift {
+    box-shadow: var(--shadow-lift), inset 0 1px 0 var(--hi);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 999px;
+    background: var(--sheet);
+    font-weight: 500;
+    box-shadow:
+      0 0 0 1px var(--shade-1),
+      0 8px 18px -10px var(--shade-2),
+      inset 0 1px 0 var(--hi);
+    transition:
+      box-shadow 150ms ease-out,
+      transform 150ms ease-out;
+  }
+  .pill:hover {
+    box-shadow:
+      0 0 0 1px var(--shade-2),
+      0 12px 22px -10px var(--shade-2),
+      inset 0 1px 0 var(--hi);
+  }
+  .pill:active {
+    transform: translateY(1px);
+  }
+
+  /* The domed terracotta "rubber cap" that sits at the left of a primary pill. */
+  .cap {
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: radial-gradient(
+      120% 110% at 50% 18%,
+      var(--rubber-hi),
+      var(--rubber) 48%,
+      var(--rubber-lo)
+    );
+    box-shadow:
+      inset 0 1px 0.5px var(--hi),
+      0 4px 8px -3px var(--shade-3);
+  }
+
+  /* A .pill with a .cap at its left. */
+  .btn-primary {
+    padding: 0.5rem 1.375rem 0.5rem 0.5rem;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .btn-secondary {
+    padding: 0.75rem 0.25rem;
+    color: var(--ink-muted);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+  }
+  .btn-secondary:hover {
+    color: var(--ink);
+    text-decoration-color: var(--accent);
+  }
+
+  .avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 12%;
+    box-shadow:
+      0 0 0 2px var(--sheet),
+      0 6px 14px -6px var(--shade-3);
+  }
+
+  /* The ledger's ruled lines are the medium's own grid, printed faintly and
+     fading out from the card. */
+  .ledger-rules {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0 27px,
+      var(--rule) 27px 28px
+    );
+    -webkit-mask-image: radial-gradient(closest-side, var(--ink) 40%, transparent);
+    mask-image: radial-gradient(closest-side, var(--ink) 40%, transparent);
+    opacity: 0.8;
   }
 
   .shell {
     @apply mx-auto w-full max-w-[76rem] px-6 md:px-10 lg:px-16;
   }
 
-  /* Above-the-fold entrance, in CSS rather than JS. The hero must never depend
-     on hydration to become visible — `both` fill leaves it at the final state
-     if animations are disabled or reduced. */
-  .rise {
-    animation: rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .mask-up {
-    display: block;
-    animation: mask-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .mask-clip {
-    display: block;
-    overflow: hidden;
-    padding-bottom: 0.12em;
-  }
-
-  /* Fluid display sizes — no breakpoint stair-stepping. */
-  .display-xl {
-    font-size: clamp(3.25rem, 11vw, 9.5rem);
-    line-height: 0.9;
-  }
-  .display-lg {
-    font-size: clamp(2.5rem, 6.5vw, 5rem);
-    line-height: 0.98;
-  }
-  .display-md {
-    font-size: clamp(1.875rem, 3.6vw, 3rem);
-    line-height: 1.05;
-  }
-
   /* Markdown post body. Hand-styled against the site's own tokens instead of
-     a typography plugin — a generic prose default would fight the spec-sheet
-     look everywhere else on this site. */
+     a typography plugin: a generic prose default would fight the soft cards
+     and Ranade type used everywhere else on this site. */
   .prose-post {
     @apply text-lg leading-relaxed text-ink-muted;
   }
@@ -246,11 +355,11 @@
     margin-top: 1.5em;
   }
   .prose-post h2 {
-    @apply font-serif text-2xl text-ink;
-    margin-top: 2.2em;
+    @apply font-display text-3xl leading-tight font-semibold text-ink;
+    margin-top: 2em;
   }
   .prose-post h3 {
-    @apply font-serif text-xl text-ink;
+    @apply font-display text-2xl font-semibold text-ink;
     margin-top: 1.8em;
   }
   .prose-post ul {
@@ -263,16 +372,16 @@
     margin-top: 0.4em;
   }
   .prose-post code {
-    @apply border border-rule bg-paper-raised px-1.5 py-0.5 font-mono text-[0.8em] text-ink;
+    @apply rounded-md border border-rule bg-paper-raised px-1.5 py-0.5 font-code text-[0.8em] text-ink;
   }
   .prose-post pre {
-    @apply overflow-x-auto border border-rule bg-paper-raised p-4 text-sm;
+    @apply overflow-x-auto rounded-[10px] border border-rule bg-paper-raised p-4 text-sm;
   }
   .prose-post pre code {
-    @apply border-0 bg-transparent p-0;
+    @apply rounded-none border-0 bg-transparent p-0;
   }
   .prose-post blockquote {
-    @apply border-l-2 border-rule-strong pl-4 italic;
+    @apply border-l-[3px] border-accent pl-4 not-italic;
   }
   .prose-post table {
     @apply w-full border-collapse text-base;
@@ -282,41 +391,7 @@
     @apply border border-rule px-3 py-2 text-left align-top;
   }
   .prose-post img {
-    @apply border border-rule;
-  }
-}
-
-/* The theme wipe is driven by WAAPI in theme-toggle.tsx; the default
-   cross-fade would fight it, so both snapshots are held still. */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-::view-transition-old(root) {
-  z-index: 1;
-}
-::view-transition-new(root) {
-  z-index: 999;
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes mask-up {
-  from {
-    transform: translateY(110%);
-  }
-  to {
-    transform: none;
+    @apply rounded-[10px] border border-rule;
   }
 }
 

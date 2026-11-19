@@ -1,23 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CommandPalette } from "@/components/command-palette";
-import { ScrollProgress } from "@/components/motion/scroll-progress";
-import { MetadataRail } from "@/components/metadata-rail";
-import { GridCrosshair } from "@/components/grid-crosshair";
 import { profile } from "@/lib/content";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
 
 const SITE = "https://thisisfaizanali.github.io";
 
@@ -36,6 +26,7 @@ export const metadata: Metadata = {
     "Node.js",
     "TypeScript",
     "PostgreSQL",
+    "Docker",
     "REST APIs",
     "Bengaluru",
     "Md Faizan Ali",
@@ -69,7 +60,7 @@ const personSchema = {
   url: SITE,
   address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
   sameAs: [profile.links.github, profile.links.linkedin, profile.links.leetcode],
-  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "API design"],
+  knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "Docker", "API design"],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -77,8 +68,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full`}
+      className={`${geistMono.variable} h-full`}
     >
+      <head>
+        {/* Ranade and Gambarino are Fontshare fonts, which next/font/google cannot load. */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=ranade@400,500,600&f[]=gambarino@400&display=swap"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"
@@ -91,9 +90,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Skip to content
           </a>
-          <ScrollProgress />
-          <MetadataRail />
-          <GridCrosshair />
           <SiteHeader />
           <main id="main" className="flex-1">
             {children}
