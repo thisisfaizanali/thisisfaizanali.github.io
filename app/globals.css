@@ -1,7 +1,10 @@
 /* Hallmark · shape: Conversational FAQ, section heads are a recruiter's questions · genre: editorial · theme: Formwork (deal 1/3, seed full-redesign-full-stack-engineer-d2a5·00aefd2f·2026-11-19·r0) · redesign: full
  * hero: Ledge · nav: floating bar (square, the draw's pill at radius 0) · footer: mast · imagery: the product (screenshots) and the portrait, hard black and white · signature: the work index, screenshots in black and white that snap to colour on hover · formwork: cast (light), night pour (dark)
- * axes: mid/display-condensed/warm · posture: restrained · contrast: pending sweep · fold: pending sweep · v2.0.0 */
-/* Hallmark · pre-emit critique: pending M5 sweep */
+ * axes: mid/display-condensed/warm · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E3 S4 R4 V4 · weakest: E, the hero's availability line still reads as an eyebrow (gate 54, Floor); the sweep fixed every other Floor finding and left this one for the plan session because moving the line recomposes the hero */
+/* Hallmark · waive 49b · the work index's display link "Pocket Ledger" at 320px · a project title is a real phrase that cannot shorten, two lines at most */
+/* Hallmark · waive 79 · case study, post and 404 pages open on a title block and read as documents · each is a single article with no hero visual to grow, so the gap after the title is the page's own rhythm */
+/* Hallmark · waive 44c · the blog index is a heading and one post row ending above the mast footer · a listing page has no hero visual to set beside the text */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
