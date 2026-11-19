@@ -10,30 +10,18 @@ export function Experience() {
       <ol className="space-y-16">
         {experience.map((job, i) => (
           <Reveal as="li" key={job.company} delay={i * 0.05}>
-            <div className="group relative grid gap-6 border-t border-rule pt-8 md:grid-cols-12 md:gap-10">
-              {/* Accent rule draws itself across the top on hover. */}
-              <span
-                aria-hidden
-                className="absolute -top-px left-0 h-px w-0 bg-accent transition-[width] duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full"
-              />
+            <div className="grid gap-6 border-t border-rule pt-8 md:grid-cols-12 md:gap-10">
               <div className="md:col-span-4">
-                <h3 className="font-serif text-2xl leading-tight transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
-                  {job.company}
-                </h3>
-                <p className="mt-1 text-sm text-ink-muted">{job.role}</p>
-                <p className="label mt-4">
-                  {job.from} — {job.to} · {job.mode}
+                <h3 className="text-2xl">{job.company}</h3>
+                <p className="mt-1 text-ink-muted">{job.role}</p>
+                <p className="label mt-3">
+                  {job.from} to {job.to}
                 </p>
+                <p className="label">{job.mode}</p>
               </div>
-              <ul className="space-y-4 md:col-span-8">
+              <ul className="list-disc space-y-3 pl-5 text-ink-muted marker:text-accent md:col-span-8">
                 {job.points.map((point) => (
-                  <li key={point} className="flex gap-4 text-ink-muted">
-                    <span
-                      className="mt-[0.6em] size-1 shrink-0 bg-rule-strong transition-colors duration-500 group-hover:bg-accent"
-                      aria-hidden
-                    />
-                    <span className="leading-relaxed">{point}</span>
-                  </li>
+                  <li key={point}>{point}</li>
                 ))}
               </ul>
             </div>
@@ -41,29 +29,18 @@ export function Experience() {
         ))}
 
         <Reveal as="li">
-          <div className="group relative grid gap-6 border-t border-rule pt-8 md:grid-cols-12 md:gap-10">
-            <span
-              aria-hidden
-              className="absolute -top-px left-0 h-px w-0 bg-accent transition-[width] duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full"
-            />
+          <div className="grid gap-6 border-t border-rule pt-8 md:grid-cols-12 md:gap-10">
             <div className="md:col-span-4">
-              <h3 className="font-serif text-2xl leading-tight transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">
-                {education.school}
-              </h3>
-              <p className="mt-1 text-sm text-ink-muted">{education.degree}</p>
-              <p className="label mt-4">
-                {education.from} — {education.to} · {education.place}
+              <h3 className="text-2xl">{education.school}</h3>
+              <p className="mt-1 text-ink-muted">{education.degree}</p>
+              <p className="label mt-3">
+                {education.from} to {education.to}
               </p>
+              <p className="label">{education.place}</p>
             </div>
-            <ul className="space-y-4 md:col-span-8">
+            <ul className="list-disc space-y-3 pl-5 text-ink-muted marker:text-accent md:col-span-8">
               {education.points.map((point) => (
-                <li key={point} className="flex gap-4 text-ink-muted">
-                  <span
-                    className="mt-[0.6em] size-1 shrink-0 bg-rule-strong transition-colors duration-500 group-hover:bg-accent"
-                    aria-hidden
-                  />
-                  <span className="leading-relaxed">{point}</span>
-                </li>
+                <li key={point}>{point}</li>
               ))}
             </ul>
           </div>
