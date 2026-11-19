@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
@@ -10,14 +10,7 @@ import { MetadataRail } from "@/components/metadata-rail";
 import { GridCrosshair } from "@/components/grid-crosshair";
 import { profile } from "@/lib/content";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
 
 const SITE = "https://thisisfaizanali.github.io";
 
@@ -77,8 +70,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full`}
+      className={`${geistMono.variable} h-full`}
     >
+      <head>
+        {/* Ranade and Gambarino are Fontshare fonts, which next/font/google cannot load. */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=ranade@400,500,600&f[]=gambarino@400&display=swap"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"
