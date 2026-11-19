@@ -317,6 +317,19 @@
       0 6px 14px -6px var(--shade-3);
   }
 
+  /* The ledger's ruled lines are the medium's own grid, printed faintly and
+     fading out from the card. */
+  .ledger-rules {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0 27px,
+      var(--rule) 27px 28px
+    );
+    -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent);
+    mask-image: radial-gradient(closest-side, #000 40%, transparent);
+    opacity: 0.8;
+  }
+
   .shell {
     @apply mx-auto w-full max-w-[76rem] px-6 md:px-10 lg:px-16;
   }

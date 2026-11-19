@@ -9,6 +9,8 @@ export const profile = {
   // The display line. Short enough to set at display-lg, and it claims both ends
   // of the stack rather than the interface alone.
   statement: "I build the interface and the API behind it.",
+  // The hero's one sentence; the longer positioning paragraph opens About.
+  lead: "A year shipping a production SaaS app, interface to endpoints.",
   // The supporting paragraph. What he does, not what he is "passionate about".
   positioning:
     "A year on a production SaaS app — component systems and real API states on one side, schema, auth, and the endpoints behind them on the other. The edge cases nobody specs are the actual job.",
