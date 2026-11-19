@@ -285,6 +285,24 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* Pictures print in black and white so the orange stays the only colour; a
+     project shows its real colours when you point at it. No transition on
+     purpose: the change is a snap, like a plate being swapped. */
+  .photo-frame {
+    position: relative;
+    overflow: hidden;
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+    background: var(--paper-raised);
+  }
+  .photo-bw {
+    filter: grayscale(1) contrast(1.35) brightness(1.08);
+  }
+  .group:hover .photo-bw.photo-reveal,
+  .group:focus-within .photo-bw.photo-reveal {
+    filter: none;
+  }
+
   /* Above-the-fold entrance, in CSS rather than JS. The hero must never depend
      on hydration to become visible — `both` fill leaves it at the final state
      if animations are disabled or reduced. */
